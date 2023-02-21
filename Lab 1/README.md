@@ -1,2 +1,0 @@
-# ProgramareAvansata
-Teme programare avansata
