@@ -17,11 +17,9 @@ public class Greedy {
     }
     public void solve (Problem problem) {
         List<Student> sortedStudents = new ArrayList(problem.getStudentList());
-        sortedStudents.sort(Comparator.comparing(student -> problem.getStudentProjects().size()));
-
-        System.out.println(sortedStudents);
+        sortedStudents.sort(Comparator.comparing(student -> problem.getStudentProjects(student).size()));
         for (Student student : sortedStudents) {
-            for(Project project: problem.getStudentProjects()){
+            for(Project project: problem.getStudentProjects(student)){
                 if(!existsAssignment(project)){
                     addAssignment(student, project);
                     break;

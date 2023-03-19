@@ -61,7 +61,6 @@ public class Problem {
         for(int i = 0; i < numberOfStudents; i++){
             List<Project> projects = new ArrayList<>(assignProjects(projectList, randomNumberOfProjects()));
             projectToStudentMap.put(studentList.get(i), projects);
-            System.out.println(projectToStudentMap.get(studentList.get(i)));
         }
         return projectToStudentMap;
     }
@@ -78,8 +77,8 @@ public class Problem {
         return projectList;
     }
 
-    public List<Project> getStudentProjects(){
-        List<Project> list = new ArrayList(getProjectToStudentMap().values());
+    public List<Project> getStudentProjects(Student student){
+        List<Project> list = new ArrayList(getProjectToStudentMap().get(student));
         return list;
     }
 
