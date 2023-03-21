@@ -43,8 +43,8 @@ public class Problem {
 
     public static List<Project> assignProjects(List<Project> projects, int numberOfProjectsAssigned) {
         Collections.shuffle(projects);
-        List<Project> projectsAssigned = new ArrayList<>(projects.subList(0, numberOfProjectsAssigned));
-//        projectsAssigned = projects.subList(0, numberOfProjectsAssigned);
+        List<Project> projectsAssigned = new ArrayList<>();
+        projectsAssigned = projects.subList(0, numberOfProjectsAssigned);
         Collections.sort(projectsAssigned);
         return projectsAssigned;
     }

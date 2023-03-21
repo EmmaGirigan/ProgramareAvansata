@@ -11,7 +11,6 @@ public class Main {
         for(Map.Entry sp : problem.getProjectToStudentMap().entrySet()){
             System.out.println(sp.getKey()+ "=" + sp.getValue());
         }
-
         List<Student> studentsWithFewerProjects;
         studentsWithFewerProjects = problem.getStudentList()
                 .stream()
