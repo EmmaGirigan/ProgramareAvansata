@@ -50,8 +50,8 @@ public class Document {
 
     @Override
     public String toString() {
-        return "Document{" +
-                ", name ='" + name + '\'' +
+        return "Document " + id + " {" +
+                "name ='" + name + '\'' +
                 ", path ='" + path + '\'' +
                 ", tags =" + tags +
                 '}';
