@@ -26,5 +26,6 @@ public class Main {
         catalog.save(catalog, "C:\\Users\\emmag\\OneDrive\\Desktop\\this.txt");
         Catalog catalogGol = new Catalog();
         catalogGol.load("C:\\Users\\emmag\\OneDrive\\Desktop\\this.txt");
+        System.out.println(catalogGol);
     }
 }

@@ -9,6 +9,7 @@ public class Document {
     private String path;
     private Map<Tags, Object> tags = new HashMap<>();
 
+    public Document(){};
     public Document(String id, String name, String path, Map<Tags, Object> tags) {
         this.id = id;
         this.name = name;
