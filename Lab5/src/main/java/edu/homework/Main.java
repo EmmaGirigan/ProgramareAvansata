@@ -2,18 +2,20 @@ package edu.homework;
 
 import edu.compulsory.Document;
 import edu.compulsory.Tags;
+import edu.compulsory.exceptions.InvalidCatalogException;
 import edu.homework.commands.*;
 import edu.homework.exceptions.InvalidFileException;
 import edu.homework.exceptions.InvalidTemplateException;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) throws InvalidTemplateException, InvalidFileException {
+    public static void main(String[] args) throws InvalidTemplateException, InvalidFileException, IOException, InvalidCatalogException {
         List<Document> documents = new ArrayList<>();
         Map<Tags, Object> tags1 = new HashMap<>();
         tags1.put(Tags.TITLE, "Aircrew Quick Reference to the METAR and TAF Codes");
@@ -35,10 +37,11 @@ public class Main {
 
         Command report = new ReportCommand();
         report.run(catalog);
-        //Command openCatalog = new ViewCommand(new File(catalog.findById("02D34").getPath()));
-        //openCatalog.run(catalog);
-        //edu.compulsory.Catalog catalogGol = new Catalog();
-        //catalogGol.load("C:\\Users\\emmag\\OneDrive\\Desktop\\this.txt");
-        //System.out.println(catalogGol);
+
+        Command openCatalog = new ViewCommand(new File(catalog.findById("02D34").getPath()));
+        openCatalog.run(catalog);
+        edu.compulsory.Catalog catalogGol = new edu.compulsory.Catalog();
+        catalogGol.load("C:\\Users\\emmag\\OneDrive\\Desktop\\this.txt");
+        System.out.println(catalogGol);
     }
 }
