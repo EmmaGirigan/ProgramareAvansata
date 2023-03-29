@@ -12,7 +12,7 @@ public class MainFrame extends JFrame{
     DrawingPanel canvas;
 
     public MainFrame() {
-        super("My Drawing Application");
+        super("Positional Game");
         init();
     }
 
