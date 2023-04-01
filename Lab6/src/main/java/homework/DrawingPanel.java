@@ -1,11 +1,13 @@
-package compulsory;
+package homework;
+
+import homework.shapes.Line;
+import homework.shapes.Vertex;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DrawingPanel extends JPanel {
     final MainFrame frame;
@@ -14,6 +16,8 @@ public class DrawingPanel extends JPanel {
     private int numVertices;
     private double edgeProbability;
     private int[] x, y;
+    private List<Vertex> vertices = new ArrayList<>();
+    private List<Line> lines = new ArrayList<>();
     BufferedImage image;
     Graphics2D graphics;
     public DrawingPanel(MainFrame frame) {
@@ -38,8 +42,10 @@ public class DrawingPanel extends JPanel {
         edgeProbability = (Double) frame.configPanel.linesCombo.getSelectedItem();
         createOffscreenImage();
         createVertices();
-        drawLines();
         drawVertices();
+        createLines();
+        System.out.println(vertices);
+        System.out.println(lines);
         repaint();
     }
     private void createVertices() {
@@ -51,16 +57,19 @@ public class DrawingPanel extends JPanel {
         for (int i = 0; i < numVertices; i++) {
             x[i] = x0 + (int) (radius * Math.cos(alpha * i));
             y[i] = y0 + (int) (radius * Math.sin(alpha * i));
+            Vertex vertex = new Vertex(x[i], y[i], i);
+            vertices.add(vertex);
         }
     }
-    private void drawLines(){
+    private void createLines(){
         double maxLines = edgeProbability*((numVertices*(numVertices-1))/2);
         int lineCount = 0;
-        for (int i = 0; i < numVertices; i++) {
-            for (int j = i + 1; j < numVertices; j++) {
+        for (Vertex vertex : vertices) {
+            for (int j = vertex.getI() + 1; j < numVertices; j++) {
                 if(lineCount<maxLines){
                     graphics.setColor(Color.BLACK);
-                    graphics.drawLine(x[i], y[i], x[j], y[j]);
+                    graphics.drawLine(x[vertex.getI()], y[vertex.getI()], x[j], y[j]);
+                    lines.add(new Line(vertex, new Vertex(x[j], y[j])));
                     lineCount++;
                 }
                 else break;

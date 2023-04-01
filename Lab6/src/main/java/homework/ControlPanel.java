@@ -1,4 +1,4 @@
-package compulsory;
+package homework;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
