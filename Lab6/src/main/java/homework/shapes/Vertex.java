@@ -45,6 +45,7 @@ public class Vertex {
         return "Vertex{" +
                 "x=" + x +
                 ", y=" + y +
+                ", i=" + i +
                 '}';
     }
 }

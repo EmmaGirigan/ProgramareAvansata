@@ -1,5 +1,6 @@
-package homework;
+package homework.panels;
 
+import homework.MainFrame;
 import homework.shapes.Line;
 import homework.shapes.Vertex;
 
@@ -16,10 +17,11 @@ public class DrawingPanel extends JPanel {
     private int numVertices;
     private double edgeProbability;
     private int[] x, y;
-    private List<Vertex> vertices = new ArrayList<>();
-    private List<Line> lines = new ArrayList<>();
+    final private List<Vertex> vertices = new ArrayList<>();
+    final private List<Line> lines = new ArrayList<>();
     BufferedImage image;
     Graphics2D graphics;
+
     public DrawingPanel(MainFrame frame) {
         this.frame = frame;
         initPanel();
@@ -41,11 +43,10 @@ public class DrawingPanel extends JPanel {
         numVertices = (Integer) frame.configPanel.dotsSpinner.getValue();
         edgeProbability = (Double) frame.configPanel.linesCombo.getSelectedItem();
         createOffscreenImage();
+        emptyVertices();
         createVertices();
         drawVertices();
         createLines();
-        System.out.println(vertices);
-        System.out.println(lines);
         repaint();
     }
     private void createVertices() {
@@ -62,13 +63,13 @@ public class DrawingPanel extends JPanel {
         }
     }
     private void createLines(){
-        double maxLines = edgeProbability*((numVertices*(numVertices-1))/2);
+        double maxLines = edgeProbability*((numVertices*(numVertices-1))/2.0);
         int lineCount = 0;
         for (Vertex vertex : vertices) {
             for (int j = vertex.getI() + 1; j < numVertices; j++) {
-                if(lineCount<maxLines){
-                    graphics.setColor(Color.BLACK);
-                    graphics.drawLine(x[vertex.getI()], y[vertex.getI()], x[j], y[j]);
+                if(lineCount < maxLines){
+//                    graphics.setColor(Color.BLACK);
+//                    graphics.drawLine(x[vertex.getI()], y[vertex.getI()], x[j], y[j]);
                     lines.add(new Line(vertex, new Vertex(x[j], y[j])));
                     lineCount++;
                 }
@@ -76,6 +77,10 @@ public class DrawingPanel extends JPanel {
             }
         }
     }
+    public void emptyLines(){
+        lines.clear();
+    }
+    public void emptyVertices(){ vertices.clear(); }
     private void drawVertices(){
         for(int i = 0; i < numVertices; i++){
             graphics.drawOval(x[i], y[i], w, h);
@@ -85,7 +90,18 @@ public class DrawingPanel extends JPanel {
     }
     @Override
     protected void paintComponent(Graphics graphics) {
-        graphics.drawImage(image, 0, 0, this);
+        for (Vertex vertex:
+             vertices) {
+            graphics.drawOval(vertex.getX(), vertex.getY(), w, h);
+            graphics.setColor(Color.BLACK);
+            graphics.fillOval(vertex.getX(), vertex.getY(), w, h);
+        }
+
+        for (Line line:
+            lines){
+            graphics.setColor(Color.BLACK);
+            graphics.drawLine(line.getV1().getX(), line.getV1().getY(), line.getV2().getX(), line.getV2().getY());
+        }
     }
 
 }

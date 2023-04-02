@@ -1,12 +1,16 @@
 package homework;
 
+import homework.panels.ConfigPanel;
+import homework.panels.ControlPanel;
+import homework.panels.DrawingPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame{
-    ConfigPanel configPanel;
-    ControlPanel controlPanel;
-    DrawingPanel canvas;
+    public ConfigPanel configPanel;
+    protected ControlPanel controlPanel;
+    public DrawingPanel canvas;
 
     public MainFrame() {
         super("Positional Game");

@@ -1,4 +1,6 @@
-package homework;
+package homework.panels;
+
+import homework.MainFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -29,5 +31,7 @@ public class ConfigPanel extends JPanel {
     }
     private void createNewGame(ActionEvent e){
         frame.canvas.createBoard();
+        frame.canvas.emptyVertices();
+        frame.canvas.emptyLines();
     }
 }

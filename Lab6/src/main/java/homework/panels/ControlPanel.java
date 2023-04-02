@@ -1,4 +1,6 @@
-package homework;
+package homework.panels;
+
+import homework.MainFrame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -47,6 +49,8 @@ public class ControlPanel extends JPanel {
         frame.canvas.repaint();
         frame.canvas.createOffscreenImage();
         frame.canvas.initPanel();
+        frame.canvas.emptyLines();
+        frame.canvas.emptyVertices();
     }
     private void exitGame(ActionEvent e) {
         frame.dispose();
