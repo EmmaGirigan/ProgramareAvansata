@@ -68,8 +68,8 @@ public class DrawingPanel extends JPanel {
         for (Vertex vertex : vertices) {
             for (int j = vertex.getI() + 1; j < numVertices; j++) {
                 if(lineCount < maxLines){
-//                    graphics.setColor(Color.BLACK);
-//                    graphics.drawLine(x[vertex.getI()], y[vertex.getI()], x[j], y[j]);
+                    graphics.setColor(Color.BLACK);
+                    graphics.drawLine(x[vertex.getI()], y[vertex.getI()], x[j], y[j]);
                     lines.add(new Line(vertex, new Vertex(x[j], y[j])));
                     lineCount++;
                 }
@@ -90,18 +90,19 @@ public class DrawingPanel extends JPanel {
     }
     @Override
     protected void paintComponent(Graphics graphics) {
-        for (Vertex vertex:
-             vertices) {
-            graphics.drawOval(vertex.getX(), vertex.getY(), w, h);
-            graphics.setColor(Color.BLACK);
-            graphics.fillOval(vertex.getX(), vertex.getY(), w, h);
-        }
-
-        for (Line line:
-            lines){
-            graphics.setColor(Color.BLACK);
-            graphics.drawLine(line.getV1().getX(), line.getV1().getY(), line.getV2().getX(), line.getV2().getY());
-        }
+        graphics.drawImage(image, 0, 0, this);
+//        for (Vertex vertex:
+//             vertices) {
+//            graphics.drawOval(vertex.getX(), vertex.getY(), w, h);
+//            graphics.setColor(Color.BLACK);
+//            graphics.fillOval(vertex.getX(), vertex.getY(), w, h);
+//        }
+//
+//        for (Line line:
+//            lines){
+//            graphics.setColor(Color.BLACK);
+//            graphics.drawLine(line.getV1().getX(), line.getV1().getY(), line.getV2().getX(), line.getV2().getY());
+//        }
     }
 
 }
