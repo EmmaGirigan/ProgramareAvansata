@@ -23,11 +23,18 @@ public class Exploration extends Thread{
         return map;
     }
 
+    public int getN() {
+        return n;
+    }
+
     public static void main(String[] args) {
         var explore = new Exploration();
         explore.addRobot(new Robot("Wall-E"));
         explore.addRobot(new Robot("R2D2"));
         explore.addRobot(new Robot("Optimus Prime"));
+        for(Robot robot : explore.robots){
+            robot.setInitialLocation(explore.n);
+        }
         explore.start();
     }
 

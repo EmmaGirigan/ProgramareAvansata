@@ -31,6 +31,10 @@ public class Cell {
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
+
+    public boolean isValidLocation(int n){
+        return this.getRow() >= 0 && this.getRow() <= n && this.getCol() >= 0 && this.getCol() <= n;
+    }
     public List<Token> getTokens() {
         return tokens;
     }

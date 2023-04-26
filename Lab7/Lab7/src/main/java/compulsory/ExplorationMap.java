@@ -3,7 +3,7 @@ package compulsory;
 import java.util.Arrays;
 
 public class ExplorationMap {
-    private int n;
+    private final int n;
     public ExplorationMap(int n, SharedMemory memory) {
         matrix = new Cell[n][n];
         this.n = n;
@@ -21,16 +21,14 @@ public class ExplorationMap {
     public int getN() {
         return n;
     }
-    public boolean visit(Cell cell, Robot robot) {
+    public void visit(Cell cell, Robot robot) {
         synchronized (cell) {
             if(!cell.isVisited()) {
                 cell.setTokens(sharedMemory.extractTokens(n));
                 cell.setVisited(true);
                 System.out.println("Got the tokens!\n");
-                return true;
             }
         }
-        return false;
     }
 
     @Override
