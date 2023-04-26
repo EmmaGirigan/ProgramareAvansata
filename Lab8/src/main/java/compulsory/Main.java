@@ -18,8 +18,7 @@ public class Main {
             var albums = new AlbumDAO();
             albums.create(1979, "The Wall", "Pink Floyd", "Rock");
             //findByName
-            albums.create(1982, "Thriller", "Michael Jackson","Funk,Soul,Pop"
-                    Database.getConnection().commit();
+            albums.create(1982, "Thriller", "Michael Jackson","Funk,Soul,Pop", Database.getConnection().commit());
             //TODO: print all the albums in the database
             Database.getConnection().close();
         } catch (SQLException e) {
