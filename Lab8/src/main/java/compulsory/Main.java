@@ -31,7 +31,7 @@ public class Main {
             con = Database.getConnection();
             try (Statement stmt = con.createStatement();
                  ResultSet rs = stmt.executeQuery(
-                         "select * from music")) {
+                         "select * from albums")) {
                 System.out.println(rs);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
