@@ -13,6 +13,9 @@ public class ArtistDAO extends DAO{
             pstmt.setString(1, name);
             pstmt.executeUpdate();
         }
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
     @Override
     public Integer findByName(String name) {
@@ -26,14 +29,16 @@ public class ArtistDAO extends DAO{
         }
     }
     @Override
-    public Integer findById(int id) throws SQLException {
+    public Integer findById(int id){
         Connection con = Database.getConnection();
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(
                      "select id from artists where id='" + id + "'")) {
             return rs.next() ? rs.getInt(1) : null;
         }
-
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 
 }
