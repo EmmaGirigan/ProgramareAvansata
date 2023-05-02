@@ -26,7 +26,8 @@ public class GenreDAO implements DAO {
         Connection con = Database.getConnection();
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(
-                     "select id from genres where name='" + name + "'")) {
+                     "select * from genres where name='" + name + "'")) {
+            rs.next();
             return new Genre(rs.getInt(0), name);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -37,7 +38,8 @@ public class GenreDAO implements DAO {
         Connection con = Database.getConnection();
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(
-                     "select id from genres where id='" + id + "'")) {
+                     "select * from genres where id='" + id + "'")) {
+            rs.next();
             return new Genre(id, rs.getString(1));
         }
         catch (SQLException e){

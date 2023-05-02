@@ -22,7 +22,8 @@ public class ArtistDAO implements DAO {
         Connection con = Database.getConnection();
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(
-                     "select id from artists where name='" + name + "'")) {
+                     "select * from artists where name='" + name + "'")) {
+            rs.next();
             return new Artist(rs.getInt(0), name);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -37,7 +38,8 @@ public class ArtistDAO implements DAO {
         Connection con = Database.getConnection();
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(
-                     "select id from artists where id='" + id + "'")) {
+                     "select * from artists where id='" + id + "'")) {
+            rs.next();
             return rs.next() ? rs.getInt(1) : null;
         }
         catch (SQLException e){
