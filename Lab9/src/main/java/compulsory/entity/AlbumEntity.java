@@ -1,7 +1,6 @@
 package compulsory.entity;
 
 import jakarta.persistence.*;
-
 @Entity
 @Table(name = "albums", schema = "public", catalog = "postgres")
 public class AlbumEntity {

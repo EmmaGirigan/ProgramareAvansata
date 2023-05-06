@@ -1,5 +1,4 @@
-package com.sample;
-
+package compulsory.entity;
 
 public class Genre {
 

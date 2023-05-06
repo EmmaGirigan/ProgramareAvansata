@@ -1,10 +1,13 @@
 package compulsory.entity;
 
-public class Artist extends Entity{
+public class Artist{
 
   private long id;
   private String name;
 
+  public Artist(String name) {
+    this.name = name;
+  }
 
   public long getId() {
     return id;

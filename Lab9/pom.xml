@@ -37,7 +37,11 @@
     <system>jira</system>
     <url>https://hibernate.atlassian.net/browse/HHH</url>
 </issueManagement>
-<dependencyManagement>
+    <properties>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+    </properties>
+    <dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -117,6 +121,16 @@
                 <groupId>xml-apis</groupId>
             </exclusion>
         </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>5.4.24.Final</version>
+    </dependency>
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.13</version>
     </dependency>
     <dependency>
         <groupId>org.hibernate.common</groupId>
