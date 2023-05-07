@@ -1,5 +1,7 @@
 package compulsory.repositories;
 
-public class AbstractRepository{
+import java.util.Optional;
 
+public abstract class AbstractRepository{
+    abstract Optional <T> findById(int id);
 }

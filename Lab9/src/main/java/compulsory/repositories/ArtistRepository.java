@@ -1,9 +1,10 @@
 package compulsory.repositories;
 
 import compulsory.Management;
-import compulsory.entity.Artist;
 import compulsory.entity.ArtistsEntity;
 import jakarta.persistence.EntityManager;
+
+import java.util.Optional;
 
 public class ArtistRepository extends AbstractRepository{
     private EntityManager em;
