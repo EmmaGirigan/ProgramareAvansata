@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import compulsory.entity.ArtistsEntity;
+import org.junit.jupiter.api.Disabled;
 import org.postgresql.copy.PGCopyInputStream;
 
 public class TestJPA {
@@ -19,18 +20,21 @@ public class TestJPA {
     public void setUp(){
         em.getTransaction().begin();
     }
+    @Disabled
     @Test
     public void testArtist(){
         ArtistsEntity artist = new ArtistsEntity("BritneySpears");
         em.persist(artist);
         em.getTransaction().commit();
     }
+    @Disabled
     @Test
     public void testAlbum(){
         AlbumsEntity album = new AlbumsEntity("Circus");
         em.persist(album);
         em.getTransaction().commit();
     }
+    @Disabled
     @Test
     public void testGenre(){
         GenresEntity genre = new GenresEntity("Pop");

@@ -3,28 +3,22 @@ package compulsory;
 import com.github.javafaker.Faker;
 import compulsory.entity.AlbumsEntity;
 import compulsory.entity.ArtistsEntity;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.IntStream;
+import compulsory.repositories.AlbumRepository;
+import compulsory.repositories.ArtistRepository;
+import jakarta.persistence.EntityManager;
 
 public class FakeData {
-
-    List<ArtistsEntity> fakeArtists = new ArrayList<>();
-    List<AlbumsEntity> fakeAlbums = new ArrayList<>();
-    private List<ArtistsEntity> fakeArtists(){
-        var artistArray = IntStream.rangeClosed(0, 300)
-                .mapToObj(i -> new ArtistsEntity(new Faker().artist().name()))
-                .toArray(ArtistsEntity[]::new);
-        Collections.addAll(fakeArtists, artistArray);
-        return fakeArtists;
+    public FakeData(EntityManager em) {
+        for(int i=0;i<100;i++){
+            fakeArtist(em);
+            fakeAlbum(em);
+        }
     }
-    private List<AlbumsEntity> fakeAlbums(){
-        var albumArray = IntStream.rangeClosed(0, 300)
-                .mapToObj(i -> new AlbumsEntity(new Faker().funnyName().name()))
-                .toArray(AlbumsEntity[]::new);
-        Collections.addAll(fakeAlbums, albumArray);
-        return fakeAlbums;
+    public void fakeArtist(EntityManager em){
+        new ArtistRepository("Artist").create(new ArtistsEntity(new Faker().artist().name()));
+    }
+
+    public void fakeAlbum(EntityManager em) {
+        new AlbumRepository("Album").create(new AlbumsEntity(new Faker().number().numberBetween(1900, 2023), new Faker().funnyName().name(), new Faker().artist().name(), new Faker().music().genre()));
     }
 }

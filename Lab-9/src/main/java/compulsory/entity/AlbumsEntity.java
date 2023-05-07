@@ -38,6 +38,24 @@ public class AlbumsEntity extends AbstractEntity {
         this.name = name;
     }
 
+    public AlbumsEntity(Integer releaseYear, String name, String artist, String genre) {
+        this.releaseYear = releaseYear;
+        this.name = name;
+        this.artist = artist;
+        this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return "AlbumsEntity{" +
+                "id=" + id +
+                ", releaseYear=" + releaseYear +
+                ", name='" + name + '\'' +
+                ", artist='" + artist + '\'' +
+                ", genre='" + genre + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
